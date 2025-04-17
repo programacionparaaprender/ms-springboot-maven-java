@@ -4,9 +4,11 @@ import org.springframework.data.relational.core.mapping.Column;
 
 import com.program.app.persistence.entity.UserEntity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class UserRequest {
 	private String nombre;
     private String email;
