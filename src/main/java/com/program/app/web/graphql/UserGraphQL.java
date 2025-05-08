@@ -1,6 +1,6 @@
 package com.program.app.web.graphql;
 
-import com.program.app.application.UserService;
+import com.program.app.interfaces.service.UserService;
 import com.program.app.persistence.entity.UserEntity;
 import org.springframework.graphql.data.method.annotation.*;
 import org.springframework.stereotype.Controller;

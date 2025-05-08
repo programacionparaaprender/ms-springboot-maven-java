@@ -1,6 +1,6 @@
 package com.program.app.web.rest;
 
-import com.program.app.application.UserService;
+import com.program.app.interfaces.service.UserService;
 import com.program.app.persistence.entity.UserEntity;
 import com.program.app.persistence.request.UserRequest;
 
