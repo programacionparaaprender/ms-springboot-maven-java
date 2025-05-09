@@ -89,6 +89,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-graphql</artifactId>
         </dependency>
+        <dependency>
+		    <groupId>com.graphql-java</groupId>
+		    <artifactId>graphiql-spring-boot-starter</artifactId>
+		    <version>5.0.2</version>
+		</dependency>
+
 
         <!-- Swagger / OpenAPI para WebFlux -->
         <dependency>

@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\luis1\AppData\Local\Temp\testng-eclipse-1528007452\testng-customsuite.xml</span>
+                    <span>C:\Users\luis1\AppData\Local\Temp\testng-eclipse-1430794147\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -107,7 +107,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\luis1\AppData\Local\Temp\testng-eclipse-1528007452\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\luis1\AppData\Local\Temp\testng-eclipse-1430794147\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -116,13 +116,18 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.program.app.persistence.request.UserRequest&quot;/&gt;
+      &lt;class name=&quot;com.program.app.interfaces.service.UserReportService&quot;/&gt;
       &lt;class name=&quot;com.program.app.web.rest.UserRestController&quot;/&gt;
       &lt;class name=&quot;com.program.app.MsSpringbootMavenJavaApplicationTests&quot;/&gt;
       &lt;class name=&quot;com.program.app.config.SwaggerConfig&quot;/&gt;
-      &lt;class name=&quot;com.program.app.application.UserService&quot;/&gt;
-      &lt;class name=&quot;com.program.app.persistence.repository.UserRepository&quot;/&gt;
+      &lt;class name=&quot;com.program.app.application.GetAllUsersUseCase&quot;/&gt;
       &lt;class name=&quot;com.program.app.web.graphql.UserGraphQL&quot;/&gt;
+      &lt;class name=&quot;com.program.app.interfaces.service.UserRemovableService&quot;/&gt;
+      &lt;class name=&quot;com.program.app.persistence.request.UserRequest&quot;/&gt;
+      &lt;class name=&quot;com.program.app.application.CreateUserUseCase&quot;/&gt;
+      &lt;class name=&quot;com.program.app.application.GetByIdUserUseCase&quot;/&gt;
+      &lt;class name=&quot;com.program.app.persistence.repository.UserRepository&quot;/&gt;
+      &lt;class name=&quot;com.program.app.interfaces.service.UserWriterService&quot;/&gt;
       &lt;class name=&quot;com.program.app.MsSpringbootMavenJavaApplication&quot;/&gt;
       &lt;class name=&quot;com.program.domain.User&quot;/&gt;
       &lt;class name=&quot;com.program.app.persistence.entity.UserEntity&quot;/&gt;
@@ -140,7 +145,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (11 classes)</span>
+                <span class="test-name">Default test (16 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->

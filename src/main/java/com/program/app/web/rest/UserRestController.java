@@ -37,7 +37,7 @@ public class UserRestController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<UserEntity>> getById(@PathVariable Long id) {
+    public Mono<UserEntity> getById(@PathVariable Long id) {
         return this.getByIdUserUseCase.execute(id);
     }
 }
