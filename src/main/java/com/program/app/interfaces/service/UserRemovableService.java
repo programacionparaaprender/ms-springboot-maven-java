@@ -4,8 +4,6 @@ import org.springframework.stereotype.Service;
 
 import com.program.app.persistence.entity.UserEntity;
 import com.program.app.persistence.repository.UserRepository;
-
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -16,15 +14,11 @@ public class UserRemovableService {
         this.repository = repository;
     }
 
-    public Mono<UserEntity> save(UserEntity user) {
-        return repository.save(user);
+    public Mono<Void> delete(UserEntity user) {
+        return repository.delete(user);
     }
-
-    public Flux<UserEntity> findAll() {
-        return repository.findAll();
-    }
-
-    public Mono<UserEntity> findById(Long id) {
-        return repository.findById(id);
+    
+    public Mono<Void> delete(Long id) {
+        return repository.deleteById(id);
     }
 }

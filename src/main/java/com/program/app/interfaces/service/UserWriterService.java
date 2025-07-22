@@ -18,5 +18,17 @@ public class UserWriterService {
     public Mono<UserEntity> save(UserEntity user) {
         return repository.save(user);
     }
+    
+    public Mono<UserEntity> update(UserEntity updatedUser, Long id) {
+    
+        return repository.findById(id)
+            .flatMap(existingUser -> {
+                existingUser.setNombre(updatedUser.getNombre());
+                existingUser.setEmail(updatedUser.getEmail());
+                existingUser.setPassword(updatedUser.getPassword());
+                return repository.save(existingUser); 
+            });
+    }
+
 
 }

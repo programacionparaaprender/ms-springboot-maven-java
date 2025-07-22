@@ -1,0 +1,17 @@
+type Query {
+    allUsers: [UserEntity!]!
+    userById(id: ID!): UserEntity
+}
+
+type Mutation {
+    createUser(nombre: String!, email: String!, password: String!): UserEntity!
+    updateUser(id: ID!, nombre: String, email: String, password: String): UserEntity!
+    deleteUser(id: ID!): Boolean!
+}
+
+type UserEntity {
+    id: ID!
+    nombre: String!
+    email: String!
+    password: String!
+}

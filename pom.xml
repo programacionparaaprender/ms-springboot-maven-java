@@ -16,17 +16,24 @@
 	<url/>
 	<packaging>jar</packaging>
 	<properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <spring-boot.version>3.4.4</spring-boot.version>
     </properties>
 	<dependencies>
-		<!-- testng -->
+		<!-- R2DBC Driver para PostgreSQL -->
 		<dependency>
-		    <groupId>org.testng</groupId>
-		    <artifactId>testng</artifactId>
-		    <version>7.8.0</version> <!-- o la última estable -->
-		    <scope>test</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>r2dbc-postgresql</artifactId>
+			<version>1.0.2.RELEASE</version>
 		</dependency>
+
+		<!-- Driver JDBC PostgreSQL (solo si necesitas Flyway o inicialización) -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.2</version>
+		</dependency>
+
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-test</artifactId>
@@ -95,7 +102,6 @@
 		    <version>5.0.2</version>
 		</dependency>
 
-
         <!-- Swagger / OpenAPI para WebFlux -->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -107,13 +113,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <!-- Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

@@ -37,8 +37,11 @@ class UserRestControllerTest {
 
     @Test
     void testCreateUser() {
-        UserRequest request = new UserRequest("John", "Doe", "john@example.com");
-        UserEntity savedUser = new UserEntity(1L, "John", "Doe", "john@example.com");
+        UserRequest request = new UserRequest();
+        request.setNombre("John Doe");
+        request.setEmail("john@example.com");
+        request.setPassword("123456");
+        UserEntity savedUser = new UserEntity(1L, "John Doe", "john@example.com", "123456");
 
         when(createUserUseCase.execute(any(UserRequest.class))).thenReturn(Mono.just(savedUser));
 
