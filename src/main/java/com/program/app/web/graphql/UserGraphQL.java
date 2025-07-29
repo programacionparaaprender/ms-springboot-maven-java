@@ -77,7 +77,8 @@ public class UserGraphQL {
     // ✅ Nuevo: Mutation para eliminar un usuario
     @MutationMapping
     public Mono<Boolean> deleteUser(@Argument Long id) {
-        return userRemovableUseCase.execute(id)
+    	UserEntity userEntity = new UserEntity();
+    	return userRemovableUseCase.execute(id)
             .thenReturn(true) // Si se elimina correctamente, retorna true
             .onErrorReturn(false); // Si falla, retorna false
     }

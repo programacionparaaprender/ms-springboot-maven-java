@@ -9,6 +9,21 @@
 >- http://localhost:8762/graphiql
 
 
+### crear usuario
+### graphql
+mutation {
+  createUser(
+    nombre: "Juan Pérez",
+    email: "juan.perez@example.com",
+    password: "123456"
+  ) {
+    id
+    nombre
+    email
+    password
+  }
+}
+
 
 ### Actualizar usuario:
 ### graphql
