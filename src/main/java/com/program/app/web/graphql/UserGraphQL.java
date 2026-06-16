@@ -1,10 +1,10 @@
 package com.program.app.web.graphql;
 
-import com.program.app.application.CreateUserUseCase;
-import com.program.app.application.GetAllUsersUseCase;
-import com.program.app.application.GetByIdUserUseCase;
-import com.program.app.application.UpdateByIdUserUseCase;
-import com.program.app.application.UserRemovableUseCase;
+import com.program.app.application.users.CreateUserUseCase;
+import com.program.app.application.users.GetAllUsersUseCase;
+import com.program.app.application.users.GetByIdUserUseCase;
+import com.program.app.application.users.UpdateByIdUserUseCase;
+import com.program.app.application.users.UserRemovableUseCase;
 import com.program.app.persistence.entity.UserEntity;
 import com.program.app.persistence.request.UserRequest;
 
@@ -21,11 +21,11 @@ public class UserGraphQL {
     private final GetByIdUserUseCase getByIdUserUseCase;
     private final UserRemovableUseCase userRemovableUseCase;
     private final UpdateByIdUserUseCase updateByIdUserUseCase;
-    
+
     public UserGraphQL(
-        CreateUserUseCase createUserUseCase, 
-        GetAllUsersUseCase getAllUsersUseCase, 
-        GetByIdUserUseCase getByIdUserUseCase, 
+        CreateUserUseCase createUserUseCase,
+        GetAllUsersUseCase getAllUsersUseCase,
+        GetByIdUserUseCase getByIdUserUseCase,
         UserRemovableUseCase userRemovableUseCase,
         UpdateByIdUserUseCase updateByIdUserUseCase
     ) {
@@ -36,50 +36,82 @@ public class UserGraphQL {
         this.updateByIdUserUseCase = updateByIdUserUseCase;
     }
 
+    // ✅ Query: lista todos los usuarios
     @QueryMapping
     public Flux<UserEntity> allUsers() {
         return getAllUsersUseCase.execute();
     }
 
+    // ✅ Query: obtiene un usuario por ID
     @QueryMapping
     public Mono<UserEntity> userById(@Argument Long id) {
-        return getByIdUserUseCase.execute(id); 
+        return getByIdUserUseCase.execute(id);
     }
 
+    // ✅ Mutation: crear usuario
     @MutationMapping
     public Mono<UserEntity> createUser(
-        @Argument String nombre, 
-        @Argument String email, 
-        @Argument String password
+        @Argument String picture,
+        @Argument String firstName,
+        @Argument String lastName,
+        @Argument String username,
+        @Argument String email,
+        @Argument String country,
+        @Argument String state,
+        @Argument String city,
+        @Argument String phone,
+        @Argument String address
     ) {
         UserRequest user = new UserRequest();
-        user.setNombre(nombre);
+        user.setPicture(picture);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUsername(username);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setCountry(country);
+        user.setState(state);
+        user.setCity(city);
+        user.setPhone(phone);
+        user.setAddress(address);
+
         return createUserUseCase.execute(user);
     }
 
-    // ✅ Nuevo: Mutation para actualizar un usuario
+    // ✅ Mutation: actualizar usuario
     @MutationMapping
     public Mono<UserEntity> updateUser(
         @Argument Long id,
-        @Argument String nombre,
+        @Argument String picture,
+        @Argument String firstName,
+        @Argument String lastName,
+        @Argument String username,
         @Argument String email,
-        @Argument String password
+        @Argument String country,
+        @Argument String state,
+        @Argument String city,
+        @Argument String phone,
+        @Argument String address
     ) {
         UserRequest userRequest = new UserRequest();
-        userRequest.setNombre(nombre);
+        userRequest.setPicture(picture);
+        userRequest.setFirstName(firstName);
+        userRequest.setLastName(lastName);
+        userRequest.setUsername(username);
         userRequest.setEmail(email);
-        userRequest.setPassword(password);
+        userRequest.setCountry(country);
+        userRequest.setState(state);
+        userRequest.setCity(city);
+        userRequest.setPhone(phone);
+        userRequest.setAddress(address);
+
         return updateByIdUserUseCase.execute(userRequest, id);
     }
 
-    // ✅ Nuevo: Mutation para eliminar un usuario
+    // ✅ Mutation: eliminar usuario
     @MutationMapping
     public Mono<Boolean> deleteUser(@Argument Long id) {
-    	UserEntity userEntity = new UserEntity();
-    	return userRemovableUseCase.execute(id)
-            .thenReturn(true) // Si se elimina correctamente, retorna true
-            .onErrorReturn(false); // Si falla, retorna false
+        return userRemovableUseCase.execute(id)
+            .thenReturn(true)
+            .onErrorReturn(false);
     }
 }

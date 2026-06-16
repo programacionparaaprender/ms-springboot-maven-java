@@ -1,4 +1,4 @@
-package com.program.app.application;
+package com.program.app.application.users;
 
 import com.program.app.interfaces.service.UserWriterService;
 import com.program.app.persistence.entity.UserEntity;

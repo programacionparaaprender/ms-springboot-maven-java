@@ -1,10 +1,10 @@
 package com.program.app.web.rest;
 
-import com.program.app.application.CreateUserUseCase;
-import com.program.app.application.GetAllUsersUseCase;
-import com.program.app.application.GetByIdUserUseCase;
-import com.program.app.application.UpdateByIdUserUseCase;
-import com.program.app.application.UserRemovableUseCase;
+import com.program.app.application.users.CreateUserUseCase;
+import com.program.app.application.users.GetAllUsersUseCase;
+import com.program.app.application.users.GetByIdUserUseCase;
+import com.program.app.application.users.UpdateByIdUserUseCase;
+import com.program.app.application.users.UserRemovableUseCase;
 import com.program.app.persistence.entity.UserEntity;
 import com.program.app.persistence.request.UserRequest;
 import reactor.core.publisher.Flux;

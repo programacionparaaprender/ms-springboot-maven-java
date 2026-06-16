@@ -1,9 +1,9 @@
 package com.program.app.web.rest;
 
 
-import com.program.app.application.CreateUserUseCase;
-import com.program.app.application.GetAllUsersUseCase;
-import com.program.app.application.GetByIdUserUseCase;
+import com.program.app.application.users.CreateUserUseCase;
+import com.program.app.application.users.GetAllUsersUseCase;
+import com.program.app.application.users.GetByIdUserUseCase;
 import com.program.app.persistence.entity.UserEntity;
 import com.program.app.persistence.request.UserRequest;
 
@@ -38,10 +38,24 @@ class UserRestControllerTest {
     @Test
     void testCreateUser() {
         UserRequest request = new UserRequest();
-        request.setNombre("John Doe");
+        request.setFirstName("John");
+        request.setLastName("Doe");
+        request.setUsername("johndoe");
         request.setEmail("john@example.com");
-        request.setPassword("123456");
-        UserEntity savedUser = new UserEntity(1L, "John Doe", "john@example.com", "123456");
+
+        UserEntity savedUser = new UserEntity(
+            1L,
+            "user-1.jpg",
+            "John",
+            "Doe",
+            "johndoe",
+            "john@example.com",
+            "United States",
+            "Florida",
+            "Miami",
+            "+1888-888-54-56",
+            "17 Queen St, Melbourne"
+        );
 
         when(createUserUseCase.execute(any(UserRequest.class))).thenReturn(Mono.just(savedUser));
 
@@ -52,13 +66,40 @@ class UserRestControllerTest {
                 .expectStatus().isOk()
                 .expectBody()
                 .jsonPath("$.id").isEqualTo(1)
-                .jsonPath("$.name").isEqualTo("John");
+                .jsonPath("$.firstName").isEqualTo("John")
+                .jsonPath("$.lastName").isEqualTo("Doe")
+                .jsonPath("$.username").isEqualTo("johndoe");
     }
+
 
     @Test
     void testGetAllUsers() {
-        UserEntity user1 = new UserEntity(1L, "John", "Doe", "john@example.com");
-        UserEntity user2 = new UserEntity(2L, "Jane", "Smith", "jane@example.com");
+    	UserEntity user1 = new UserEntity(
+                1L,
+                "user-1.jpg",
+                "John",
+                "Doe",
+                "johndoe",
+                "john@example.com",
+                "United States",
+                "Florida",
+                "Miami",
+                "+1888-888-54-56",
+                "17 Queen St, Melbourne"
+        );
+    	UserEntity user2 = new UserEntity(
+                2L,
+                "user-2.jpg",
+                "Jose",
+                "Andrade",
+                "jandrade",
+                "jandrade@example.com",
+                "United States",
+                "Florida",
+                "Miami",
+                "+1888-888-54-56",
+                "17 Queen St, Melbourne"
+        );
 
         when(getAllUsersUseCase.execute()).thenReturn(Flux.just(user1, user2));
 
@@ -72,7 +113,19 @@ class UserRestControllerTest {
 
     @Test
     void testGetUserById_found() {
-        UserEntity user = new UserEntity(1L, "John", "Doe", "john@example.com");
+    	UserEntity user = new UserEntity(
+                1L,
+                "user-1.jpg",
+                "John",
+                "Doe",
+                "johndoe",
+                "john@example.com",
+                "United States",
+                "Florida",
+                "Miami",
+                "+1888-888-54-56",
+                "17 Queen St, Melbourne"
+        );
 
         when(getByIdUserUseCase.execute(1L)).thenReturn(Mono.just(user));
 

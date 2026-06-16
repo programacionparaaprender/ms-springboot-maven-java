@@ -10,17 +10,31 @@ public class UserRequestTest {
     public void testConvert() {
         // Arrange
         UserRequest request = new UserRequest();
-        request.setNombre("Juan");
-        request.setEmail("juan@example.com");
-        request.setPassword("password123");
-
+        request.setPicture("updatedUser.getPicture()");
+        request.setFirstName("updatedUser.getFirstName()");
+        request.setLastName("updatedUser.getLastName()");
+        request.setUsername("updatedUser.getUsername()");
+        request.setEmail("updatedUser.getEmail()");
+        request.setCountry("updatedUser.getCountry()");
+        request.setState("updatedUser.getState()");
+        request.setCity("updatedUser.getCity()");
+        request.setPhone("updatedUser.getPhone()");
+        request.setAddress("updatedUser.getAddress()");  
         // Act
         UserEntity entity = request.convert();
 
         // Assert
         assertNotNull(entity);
-        assertEquals("Juan", entity.getNombre());
-        assertEquals("juan@example.com", entity.getEmail());
-        assertEquals("password123", entity.getPassword());
+        
+        assertEquals("updatedUser.getPicture()", entity.getPicture());
+        assertEquals("updatedUser.getFirstName()", entity.getFirstName());
+        assertEquals("updatedUser.getLastName()", entity.getLastName());
+        assertEquals("updatedUser.getUsername()", entity.getUsername());
+        assertEquals("updatedUser.getEmail()", entity.getEmail());
+        assertEquals("updatedUser.getCountry()", entity.getCountry());
+        assertEquals("updatedUser.getState()", entity.getState());
+        assertEquals("updatedUser.getCity()", entity.getCity());
+        assertEquals("updatedUser.getPhone()", entity.getPhone());
+        assertEquals("updatedUser.getAddress()", entity.getAddress());  
     }
 }

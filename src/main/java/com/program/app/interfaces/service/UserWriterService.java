@@ -1,5 +1,6 @@
 package com.program.app.interfaces.service;
 
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.stereotype.Service;
 
 import com.program.app.persistence.entity.UserEntity;
@@ -23,12 +24,17 @@ public class UserWriterService {
     
         return repository.findById(id)
             .flatMap(existingUser -> {
-                existingUser.setNombre(updatedUser.getNombre());
+                existingUser.setPicture(updatedUser.getPicture());
+                existingUser.setFirstName(updatedUser.getFirstName());
+                existingUser.setLastName(updatedUser.getLastName());
+                existingUser.setUsername(updatedUser.getUsername());
                 existingUser.setEmail(updatedUser.getEmail());
-                existingUser.setPassword(updatedUser.getPassword());
+                existingUser.setCountry(updatedUser.getCountry());
+                existingUser.setState(updatedUser.getState());
+                existingUser.setCity(updatedUser.getCity());
+                existingUser.setPhone(updatedUser.getPhone());
+                existingUser.setAddress(updatedUser.getAddress());           
                 return repository.save(existingUser); 
             });
     }
-
-
 }
